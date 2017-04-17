@@ -73,3 +73,9 @@ $ ->
         $('iframe.oharaEmbedIframe').each () =>
           $(this).width applyWidth
           $(this).height(applyHeight)
+
+    refresh: (timeWait) =>
+      setTimeout =>
+        @main()
+        @responsive()
+      , timeWait || 3E3
