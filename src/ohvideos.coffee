@@ -1,5 +1,5 @@
 $ ->
-  class _oh
+  class ohvideos
     constructor: (@width = 480, @height = 270, @sites) ->
 
       @masterDiv = $('.oharaEmbed')
@@ -78,4 +78,7 @@ $ ->
       setTimeout =>
         @main()
         @responsive()
-      , timeWait || 3E3
+      , timeWait || 3e3
+
+  oh_refresh (timeWait) ->
+    ohObject = ohObject || new ohvideos()
