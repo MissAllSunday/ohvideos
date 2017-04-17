@@ -53,3 +53,23 @@ $ ->
 
       video.domElement.append(title)
       video
+
+    responsive: () =>
+      do $(window).resize () ->
+        # Get the new width and height
+        newWidth = @basedElement.width()
+        newHeight = Math.min newWidth * @aspectRatio, @height
+
+        # If the new width is lower than the "default width" then apply some resizing. No? then go back to our default sizes
+        applyResize = (newWidth <= @width)
+        applyWidth = newWidth if applyResize else @width
+        applyHeight = newHeight if applyResize else @height
+
+        # Do the thing already
+        @masterDiv.width applyWidth
+        @masterDiv.height applyHeight
+
+        # The iframe too!
+        $('iframe.oharaEmbedIframe').each () =>
+          $(this).width applyWidth
+          $(this).height(applyHeight)
