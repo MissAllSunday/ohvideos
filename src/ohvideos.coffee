@@ -62,8 +62,8 @@ $ ->
 
         # If the new width is lower than the "default width" then apply some resizing. No? then go back to our default sizes
         applyResize = (newWidth <= @width)
-        applyWidth = newWidth if applyResize else @width
-        applyHeight = newHeight if applyResize else @height
+        applyWidth =  if  applyResize then newWidth else @width
+        applyHeight = if  applyResize then newHeight else @height
 
         # Do the thing already
         @masterDiv.width applyWidth
